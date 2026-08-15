@@ -21,6 +21,7 @@ export class TasksService {
 
     @Inject(forwardRef(() => ProjectsService))
     private projectService: ProjectsService,
+    @Inject(forwardRef(() => SubTasksService))
     private subTaskService: SubTasksService,
   ) {}
 

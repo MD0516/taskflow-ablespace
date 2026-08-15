@@ -1,4 +1,4 @@
-import { ForbiddenException, Injectable } from '@nestjs/common';
+import { ForbiddenException, forwardRef, Inject, Injectable } from '@nestjs/common';
 import { CreateBulkSubTaskDto, CreateSubTaskDto } from './dto/create-sub-task.dto';
 import { UpdateBulkSubTaskDto } from './dto/update-sub-task.dto';
 import { InjectModel } from '@nestjs/mongoose';
@@ -12,6 +12,7 @@ export class SubTasksService {
   constructor(
     @InjectModel(SubTask.name)
     private subTaskModel: Model<SubTaskDocument>,
+    @Inject(forwardRef(() => TasksService))
     private taskService: TasksService,
   ) {}
 
